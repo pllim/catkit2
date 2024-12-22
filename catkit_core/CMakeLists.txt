@@ -36,6 +36,7 @@ add_library(catkit_core STATIC
     FreeListAllocator.cpp
     MessageBroker.cpp
     UuidGenerator.cpp
+    LocalMemory.cpp
     proto/core.pb.cc
     proto/logging.pb.cc
     proto/testbed.pb.cc
