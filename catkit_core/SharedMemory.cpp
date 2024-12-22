@@ -82,7 +82,7 @@ SharedMemory::SharedMemory(const std::string &id, FileObject file, bool is_owner
 		throw std::runtime_error("Something went wrong while mapping shared memory file.");
 }
 
-void *SharedMemory::GetAddress()
+void *SharedMemory::GetAddress(std::size_t offset)
 {
-	return m_Buffer;
+	return static_cast<char *>(m_Buffer) + offset;
 }

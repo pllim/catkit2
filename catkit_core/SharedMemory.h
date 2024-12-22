@@ -1,6 +1,8 @@
 #ifndef SHARED_MEMORY_H
 #define SHARED_MEMORY_H
 
+#include "Memory.h"
+
 #include <memory>
 #include <string>
 
@@ -21,7 +23,7 @@
 	typedef int FileObject;
 #endif
 
-class SharedMemory
+class SharedMemory : public Memory
 {
 private:
 	SharedMemory(const std::string &id, FileObject file, bool is_owner);
@@ -32,7 +34,7 @@ public:
 	static std::shared_ptr<SharedMemory> Create(const std::string &id, size_t num_bytes_in_buffer);
 	static std::shared_ptr<SharedMemory> Open(const std::string &id);
 
-	void *GetAddress();
+	void *GetAddress(std::size_t offset = 0) override;
 
 private:
 	std::string m_Id;
